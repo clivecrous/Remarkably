@@ -9,7 +9,7 @@ module Remarkably
         super
         @css_engine = Engines::CSS.new
       end
-      def style context, *args, &block
+      def style args, hash, &block
         if block_given?
           @context.remarkably_engine( @css_engine )
           block.call
@@ -17,7 +17,7 @@ module Remarkably
           css_result = @css_engine.to_s
           args = [css_result]+args
         end
-        method_missing( :style, @context, *args )
+        method!( :style, args, hash, &block )
       end
     end
   end
