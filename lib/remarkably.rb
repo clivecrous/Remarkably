@@ -33,12 +33,8 @@ module Remarkably
   module Common
 
     def method_missing(sym, *args, &block)
-      @remarkable_engine ||= eval("Engines::#{Engines::constants[0]}.new")
-      @remarkable_engine.send( sym, self, *args, &block )
-    end
-
-    def remarkable_engine engine
-      @remarkable_engine = engine
+      @remarkably_engine ||= eval("Engines::#{Engines::constants[0]}.new")
+      @remarkably_engine.send( sym, self, *args, &block )
     end
 
   end

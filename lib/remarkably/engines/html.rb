@@ -11,9 +11,9 @@ module Remarkably
       end
       def style context, *args, &block
         if block_given?
-          @context.remarkable_engine( @css_engine )
+          @context.remarkably_engine( @css_engine )
           block.call
-          @context.remarkable_engine( self )
+          @context.remarkably_engine( self )
           css_result = @css_engine.to_s
           args = [css_result]+args
         end
