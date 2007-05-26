@@ -29,6 +29,7 @@ module Remarkably
     if block_given?
       @remarkably << "\n "
       tag_css_inner!( tag, inline, attributes, &block )
+      @remarkably.chop!
       @remarkably << "}"
     end
     @remarkably_method = :css

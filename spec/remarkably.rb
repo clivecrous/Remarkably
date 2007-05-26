@@ -63,7 +63,7 @@ describe Remarkably do
           end
         end
       end
-    end.to_s.should == "<html><head><style>\nbody {background-color:white;border:1px solid black;}\ndiv {color:blue;}\n</style></head></html>"
+    end.to_s.should == "<html><head><style>\nbody {background-color:white;border:1px solid black}\ndiv {color:blue}\n</style></head></html>"
   end
 
   it "Understands deep style sheets" do
@@ -75,7 +75,7 @@ describe Remarkably do
           end
         end
       end
-    end.to_s.should == "<style>\ndiv table td {background-color:red;}\n</style>"
+    end.to_s.should == "<style>\ndiv table td {background-color:red}\n</style>"
   end
 
   it "Accepts multiple inner blocks for stylesheets" do
@@ -88,7 +88,7 @@ describe Remarkably do
           color "red"
         end
       end
-    end.to_s.should == "<style>\ndiv p {color:blue;}\ndiv div {color:red;}\n</style>"
+    end.to_s.should == "<style>\ndiv p {color:blue}\ndiv div {color:red}\n</style>"
   end
 
   it "Understands style sheet classes" do
@@ -100,7 +100,7 @@ describe Remarkably do
           end
         end
       end
-    end.to_s.should == "<style>\ndiv.report table.pretty td {background-color:red;}\n</style>"
+    end.to_s.should == "<style>\ndiv.report table.pretty td {background-color:red}\n</style>"
   end
 
   it "Understands style sheet ids" do
@@ -112,7 +112,7 @@ describe Remarkably do
           end
         end
       end
-    end.to_s.should == "<style>\ndiv#main_content table.pretty td {background-color:red;}\n</style>"
+    end.to_s.should == "<style>\ndiv#main_content table.pretty td {background-color:red}\n</style>"
   end
 
   it "Understands classes, ids and pseudo classes" do
@@ -124,7 +124,7 @@ describe Remarkably do
           end
         end
       end
-    end.to_s.should == "<style>\ndiv#main_content table.pretty:hover td {background-color:red;}\n</style>"
+    end.to_s.should == "<style>\ndiv#main_content table.pretty:hover td {background-color:red}\n</style>"
   end
 
   it "Understands classes, ids and pseudo classes through inline" do
@@ -136,7 +136,7 @@ describe Remarkably do
           end
         end
       end
-    end.to_s.should == "<style>\ndiv#main_content table.pretty:hover td.foo:bar {background-color:red;}\n</style>"
+    end.to_s.should == "<style>\ndiv#main_content table.pretty:hover td.foo:bar {background-color:red}\n</style>"
   end
 
   it "Processes inline styles" do
