@@ -3,14 +3,23 @@ module Remarkably
   module Base
 
     class Engine
-      def initialize
+      def initialize *args, &block
         clear!
+        self.instance_eval( &block ) if block_given?
       end
 
-      def method_missing(sym, context, *args, &block)
+      def missing_method(sym, context, *args, &block)
         @context = context
         hash = args.last.is_a?(Hash) ? args.pop : {}
-        method!(sym, args, hash, &block)
+        if methods.index( sym.to_s )
+          self.send( sym, args, hash, &block )
+        else
+          method!(sym, args, hash, &block)
+        end
+      end
+
+      def method_missing(sym, *args, &block)
+        missing_method( sym, self, *args, &block )
       end
 
       def clear!
@@ -34,7 +43,7 @@ module Remarkably
 
     def method_missing(sym, *args, &block)
       @remarkably_engine ||= eval("Engines::#{Engines::constants[0]}.new")
-      @remarkably_engine.send( sym, self, *args, &block )
+      @remarkably_engine.send( :missing_method, sym, self, *args, &block )
     end
 
   end
