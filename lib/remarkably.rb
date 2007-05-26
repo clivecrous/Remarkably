@@ -1,7 +1,7 @@
 module Remarkably
   def method_missing(sym, *args, &block)
     hash = args.last.is_a?(Hash) ? args.pop : {}
-    tag!(sym.to_s.downcase, args, hash, &block)
+    tag!(sym, args, hash, &block)
   end
 
   def tag_xml!( tag, inline, attributes, &block )
@@ -60,7 +60,9 @@ module Remarkably
     end
   end
 
-  def tag!(tag, inline, attributes, &block)
+  def tag!(tag, inline=[], attributes={}, &block)
+    tag = tag.to_s.downcase
+    inline = [inline] if inline.class != Array
     @remarkably ||= ''
     @remarkably_method ||= :xml
 
@@ -79,7 +81,7 @@ module Remarkably
     self
   end
 
-  def remarkably
+  def to_s
     result = @remarkably
     @remarkably = nil
     result
