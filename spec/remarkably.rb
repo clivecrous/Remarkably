@@ -78,6 +78,19 @@ describe Remarkably do
     end.to_s.should == "<style>\ndiv table td {background-color:red;}\n</style>"
   end
 
+  it "Accepts multiple inner blocks for stylesheets" do
+    style do
+      div do
+        P do
+          color "blue"
+        end
+        div do
+          color "red"
+        end
+      end
+    end.to_s.should == "<style>\ndiv p {color:blue;}\ndiv div {color:red;}\n</style>"
+  end
+
   it "Understands style sheet classes" do
     style do
       div :class => "report" do
@@ -102,7 +115,7 @@ describe Remarkably do
     end.to_s.should == "<style>\ndiv#main_content table.pretty td {background-color:red;}\n</style>"
   end
 
-  it "Understands classed, ids and pseudo classes" do
+  it "Understands classes, ids and pseudo classes" do
     style do
       div :id => "main_content" do
         table :class => "pretty", :pseudo => "hover" do
@@ -114,7 +127,7 @@ describe Remarkably do
     end.to_s.should == "<style>\ndiv#main_content table.pretty:hover td {background-color:red;}\n</style>"
   end
 
-  it "Understands classed, ids and pseudo classes through inline" do
+  it "Understands classes, ids and pseudo classes through inline" do
     style do
       div "#main_content" do
         table ".pretty", ":hover" do
