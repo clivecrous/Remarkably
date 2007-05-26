@@ -1,4 +1,4 @@
-require 'remarkably'
+require '../lib/remarkably'
 
 class Page
   include Remarkably
@@ -49,5 +49,5 @@ class Page
 end
 
 page = Page.new
-puts "Main Page => #{page.main_page.remarkably}"
-puts "Exit Page => #{page.exit_page.remarkably}"
+puts "Main Page => #{page.main_page}"
+puts "Exit Page => #{page.exit_page}"

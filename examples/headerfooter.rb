@@ -1,4 +1,4 @@
-require 'remarkably'
+require '../lib/remarkably'
 
 class Page
   include Remarkably
@@ -32,6 +32,6 @@ end
 
 page = Page.new
 
-puts "Just the header => #{page.header.remarkably}"
-puts "Just the footer => #{page.footer.remarkably}"
-puts "The entire page => #{page.entire_page.remarkably}"
+puts "Just the header => #{page.header}"
+puts "Just the footer => #{page.footer}"
+puts "The entire page => #{page.entire_page}"

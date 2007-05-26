@@ -1,4 +1,4 @@
-require 'remarkably'
+require '../lib/remarkably'
 
 class Page
   include Remarkably
@@ -21,9 +21,6 @@ class Page
     end
   end
 
-  def render
-    remarkably
-  end
 end
 
-puts Page.new.draw.render
+puts Page.new.draw.to_s
