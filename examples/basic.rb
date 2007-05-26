@@ -1,7 +1,7 @@
-require '../lib/remarkably'
+require '../lib/remarkably/engines/html'
 
 class Page
-  include Remarkably
+  include Remarkably::Common
 
   def initialize
     @title = "A Basic Remamarkably example"
