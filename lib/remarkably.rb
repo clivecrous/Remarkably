@@ -36,8 +36,7 @@ module Remarkably
   module Common
 
     def method_missing(sym, *args, &block)
-      #@remarkable_engine ||= Engines::constants[0]
-      @remarkable_engine ||= Engines::XML.new
+      @remarkable_engine ||= eval("Engines::#{Engines::constants[0]}.new")
       @remarkable_engine.send( sym, self, *args, &block )
     end
 
