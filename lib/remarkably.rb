@@ -1,14 +1,8 @@
 module Remarkably
 
-  class Config
-    @@default_engine = nil
+  module Config
     class << self
-      def default_engine
-        @@default_engine
-      end
-      def default_engine= engine
-        @@default_engine = engine
-      end
+      attr_accessor :default_engine
     end
   end
 
