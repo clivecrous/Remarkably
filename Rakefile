@@ -16,3 +16,10 @@ end
 Rake::GemPackageTask.new(spec) do |pkg| 
   pkg.need_tar = true 
 end 
+
+desc "Run the unit tests"
+task :test do
+  sh "spec spec/remarkably.rb"
+end
+
+task :default => %w{test gem}
