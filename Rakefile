@@ -22,4 +22,4 @@ task :test do
   sh "spec spec/remarkably.rb"
 end
 
-task :default => %w{test gem}
+task :default => %w{test}
