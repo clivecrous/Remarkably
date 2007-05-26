@@ -19,7 +19,7 @@ end
 
 desc "Run the unit tests"
 task :test do
-  sh "spec spec/"
+  sh "spec -r loadpath spec/"
 end
 
 desc "Create the documentation"

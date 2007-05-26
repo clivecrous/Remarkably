@@ -1,4 +1,5 @@
-require '../lib/remarkably/engines/html'
+require '../loadpath'
+require 'remarkably/engines/html'
 
 class Page
   include Remarkably::Common

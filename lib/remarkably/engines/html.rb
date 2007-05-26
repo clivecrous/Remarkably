@@ -1,6 +1,6 @@
-require "#{File::dirname(__FILE__)}/../../remarkably"
-require "#{File::dirname(__FILE__)}/xml"
-require "#{File::dirname(__FILE__)}/css"
+require 'remarkably'
+require 'remarkably/engines/xml'
+require 'remarkably/engines/css'
 
 module Remarkably
   module Engines

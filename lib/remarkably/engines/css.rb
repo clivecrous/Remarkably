@@ -1,4 +1,4 @@
-require "#{File::dirname(__FILE__)}/../../remarkably"
+require 'remarkably'
 
 module Remarkably
   module Engines
