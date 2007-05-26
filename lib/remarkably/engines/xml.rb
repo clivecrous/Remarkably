@@ -25,6 +25,7 @@ module Remarkably
 
       def text context, *args
         @output << args.join
+        self
       end
 
     end
