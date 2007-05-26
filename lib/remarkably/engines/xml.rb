@@ -19,6 +19,8 @@ module Remarkably
         else
           @output << "/>"
         end
+
+        self
       end
 
       def text context, *args
