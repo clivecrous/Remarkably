@@ -11,13 +11,13 @@ module Remarkably
       end
       def style args, hash, &block
         if block_given?
-          @context.remarkably_engine( @css_engine )
+          @css_engine.clear!
+          @context.remarkably_engine = @css_engine
           block.call
-          @context.remarkably_engine( self )
-          css_result = @css_engine.to_s
-          args = [css_result]+args
+          @context.remarkably_engine = self
+          args = ["\n#{@css_engine}"]+args
         end
-        method!( :style, args, hash, &block )
+        method!( :style, args, hash )
       end
     end
   end
