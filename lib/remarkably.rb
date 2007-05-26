@@ -20,7 +20,6 @@ module Remarkably
       @remarkably << ">"
       result = block.call if block_given?
       @remarkably << inline.shift.to_s while inline.size > 0
-      @remarkably << result.to_s if result.class != self.class
       @remarkably << "</#{tag}>"
     else
       @remarkably << "/>"
