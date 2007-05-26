@@ -15,8 +15,8 @@ module Remarkably
           block.call
           @context.remarkable_engine( self )
           css_result = @css_engine.to_s
+          args = [css_result]+args
         end
-        args = [css_result]+args if css_result
         method_missing( :style, @context, *args )
       end
     end
