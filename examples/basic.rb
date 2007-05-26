@@ -10,12 +10,12 @@ class Page
   def draw
     html do
       head do
-        title { @title }
+        title @title
       end
       body do
-        h1 { @title }
+        h1 @title
         hr
-        P { "Hello and welcome to Remarkably. This is a very basic example on how to get a basic page up." }
+        P "Hello and welcome to Remarkably. This is a very basic example on how to get a basic page up."
         hr
       end
     end

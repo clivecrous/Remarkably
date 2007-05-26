@@ -6,42 +6,36 @@ class Page
   def menu
     div :class=>"menu" do
       ul do
-        li { 'foo' }
-        li { 'bar' }
-        li { 'baz' }
+        li 'foo'
+        li 'bar'
+        li 'baz'
       end
     end
   end
 
   def footer
-    div :class=>"footer" do
-      "This is a footer"
-    end
+    div "This is a footer", :class=>"footer"
   end
 
   def normal_content
-    P do
-      "Hello World!"
-    end
+    P "Hello World!"
   end
 
   def other_content
-    P do
-      "Goodbye World!"
-    end
+    P "Goodbye World!"
   end
 
   def page content
     html do
       head do
-        title { "Test Page" }
+        title "Test Page"
       end
       body do
         menu
         if content.class == Symbol
           send content
         else
-          @remarkably << content.to_s
+          text content.to_s
         end
         footer
       end
