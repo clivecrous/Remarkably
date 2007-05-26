@@ -129,7 +129,7 @@ describe Remarkably do
   it "Processes inline styles" do
     div do
       P( "Hello World", :style => inline_style { background_color "yellow"; color "red" } )
-      div ( :style => inline_style { background_color "red"; color "yellow" } ) do
+      div( :style => inline_style { background_color "red"; color "yellow" } ) do
         P "Goodbye World"
       end
     end.remarkably.should == '<div><p style="background-color:yellow;color:red;">Hello World</p><div style="background-color:red;color:yellow;"><p>Goodbye World</p></div></div>'
