@@ -3,7 +3,7 @@ require 'rake/gempackagetask'
 
 spec = Gem::Specification.new do |s| 
   s.name = "Remarkably"
-  s.version = "0.5.1"
+  s.version = "0.5.2"
   s.author = "Clive Crous"
   s.email = "clive@darkarts.co.za"
   s.homepage = "http://www.darkarts.co.za/"
