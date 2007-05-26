@@ -19,7 +19,7 @@ end
 
 desc "Run the unit tests"
 task :test do
-  sh "spec spec/remarkably.rb"
+  sh "spec spec/"
 end
 
 desc "Create the documentation"
