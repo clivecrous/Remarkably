@@ -4,35 +4,35 @@ describe Remarkably do
   include Remarkably
 
   it "Accepts a string as a paramater" do
-    testing( "Hello World" ).remarkably.should ==
+    testing( "Hello World" ).to_s.should ==
       "<testing>Hello World</testing>"
   end
 
   it "Accepts a block as a paramater" do
     testing do
       text "Hello World"
-    end.remarkably.should ==
+    end.to_s.should ==
       "<testing>Hello World</testing>"
   end
 
   it "Accepts multiple strings as paramaters" do
-    testing( "Hello", "World" ).remarkably.should ==
+    testing( "Hello", "World" ).to_s.should ==
       "<testing>HelloWorld</testing>"
   end
 
   it "Closes empty tags neatly" do
-    testing.remarkably.should ==
+    testing.to_s.should ==
       "<testing/>"
   end
 
   it "Accepts only attributes" do
-    testing( :id => "attributes" ).remarkably.should ==
+    testing( :id => "attributes" ).to_s.should ==
       '<testing id="attributes"/>'
   end
 
   it "Accepts strings and attributes" do
     testing( "Hello ", "World",
-             :id => "attributes", :class => "test" ).remarkably.should ==
+             :id => "attributes", :class => "test" ).to_s.should ==
       '<testing class="test" id="attributes">Hello World</testing>'
   end
 
@@ -47,7 +47,7 @@ describe Remarkably do
       
     page do
       P "Internal Content"
-    end.remarkably.should == "<html><body><p>Internal Content</p></body></html>"
+    end.to_s.should == "<html><body><p>Internal Content</p></body></html>"
   end
 
   it "Understands style sheets" do
@@ -63,7 +63,7 @@ describe Remarkably do
           end
         end
       end
-    end.remarkably.should == "<html><head><style>\nbody {background-color:white;border:1px solid black;}\ndiv {color:blue;}\n</style></head></html>"
+    end.to_s.should == "<html><head><style>\nbody {background-color:white;border:1px solid black;}\ndiv {color:blue;}\n</style></head></html>"
   end
 
   it "Understands deep style sheets" do
@@ -75,7 +75,7 @@ describe Remarkably do
           end
         end
       end
-    end.remarkably.should == "<style>\ndiv table td {background-color:red;}\n</style>"
+    end.to_s.should == "<style>\ndiv table td {background-color:red;}\n</style>"
   end
 
   it "Understands style sheet classes" do
@@ -87,7 +87,7 @@ describe Remarkably do
           end
         end
       end
-    end.remarkably.should == "<style>\ndiv.report table.pretty td {background-color:red;}\n</style>"
+    end.to_s.should == "<style>\ndiv.report table.pretty td {background-color:red;}\n</style>"
   end
 
   it "Understands style sheet ids" do
@@ -99,7 +99,7 @@ describe Remarkably do
           end
         end
       end
-    end.remarkably.should == "<style>\ndiv#main_content table.pretty td {background-color:red;}\n</style>"
+    end.to_s.should == "<style>\ndiv#main_content table.pretty td {background-color:red;}\n</style>"
   end
 
   it "Understands classed, ids and pseudo classes" do
@@ -111,7 +111,7 @@ describe Remarkably do
           end
         end
       end
-    end.remarkably.should == "<style>\ndiv#main_content table.pretty:hover td {background-color:red;}\n</style>"
+    end.to_s.should == "<style>\ndiv#main_content table.pretty:hover td {background-color:red;}\n</style>"
   end
 
   it "Understands classed, ids and pseudo classes through inline" do
@@ -123,7 +123,7 @@ describe Remarkably do
           end
         end
       end
-    end.remarkably.should == "<style>\ndiv#main_content table.pretty:hover td.foo:bar {background-color:red;}\n</style>"
+    end.to_s.should == "<style>\ndiv#main_content table.pretty:hover td.foo:bar {background-color:red;}\n</style>"
   end
 
   it "Processes inline styles" do
@@ -132,7 +132,7 @@ describe Remarkably do
       div( :style => inline_style { background_color "red"; color "yellow" } ) do
         P "Goodbye World"
       end
-    end.remarkably.should == '<div><p style="background-color:yellow;color:red;">Hello World</p><div style="background-color:red;color:yellow;"><p>Goodbye World</p></div></div>'
+    end.to_s.should == '<div><p style="background-color:yellow;color:red;">Hello World</p><div style="background-color:red;color:yellow;"><p>Goodbye World</p></div></div>'
   end
 
 end
