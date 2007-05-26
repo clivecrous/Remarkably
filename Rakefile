@@ -22,4 +22,9 @@ task :test do
   sh "spec spec/remarkably.rb"
 end
 
+desc "Create the documentation"
+task :doc do
+  sh "rdoc lib"
+end
+
 task :default => %w{test}
