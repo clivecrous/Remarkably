@@ -46,6 +46,14 @@ module Remarkably
       @remarkably_engine.send( :missing_method, sym, self, *args, &block )
     end
 
+    def remarkably_engine= engine
+      @remarkably_engine = engine
+    end
+
+    def remarkably_engine
+      @remarkably_engine
+    end
+
   end
 
   module Engines
