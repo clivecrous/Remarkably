@@ -1,5 +1,16 @@
 require 'lib/remarkably/engines/xml'
 
+describe "Remarkably::Engine::XML expclicit engine usage" do
+  it "performs an instance_eval when a block is given to new" do
+    xml = Remarkably::Engines::XML.new
+    xml.html do
+      xml.body do
+        xml.P "Hello World!"
+      end
+    end.to_s.should == "<html><body><p>Hello World!</p></body></html>"
+  end
+end
+
 describe "Remarkably::Engine::XML instance_eval" do
   it "performs an instance_eval when a block is given to new" do
     Remarkably::Engines::XML.new do
