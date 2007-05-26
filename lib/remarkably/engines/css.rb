@@ -42,7 +42,6 @@ module Remarkably
       end
 
     end
-    Config.default_engine = CSS
   end
 end
 

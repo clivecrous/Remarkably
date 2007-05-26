@@ -29,6 +29,5 @@ module Remarkably
       end
 
     end
-    Config.default_engine = XML
   end
 end

@@ -1,17 +1,5 @@
 module Remarkably
 
-  class Config
-    @@default_engine = nil
-    class << self
-      def default_engine
-        @@default_engine
-      end
-      def default_engine= engine
-        @@default_engine = engine
-      end
-    end
-  end
-
   module Base
 
     class Engine
@@ -54,7 +42,7 @@ module Remarkably
   module Common
 
     def method_missing(sym, *args, &block)
-      @remarkably_engine ||= Config.default_engine.new
+      @remarkably_engine ||= eval("Engines::#{Engines::constants[0]}.new")
       @remarkably_engine.send( :missing_method, sym, self, *args, &block )
     end
 

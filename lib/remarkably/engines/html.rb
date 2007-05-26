@@ -20,6 +20,5 @@ module Remarkably
         method!( :style, args, hash )
       end
     end
-    Config.default_engine = HTML
   end
 end
