@@ -24,12 +24,13 @@ module Remarkably
             @css_prefix_rendered = true
             @css_first_use = false
           end
-          @output << "#{sym.gsub('_','-')}:#{args.map{|a|a.to_s}.join};"
+          @output << "#{sym.gsub('_','-')}:#{args.map{|a|a.to_s}.join(' ')};"
         end
+        self
       end
 
       def to_s
-        "#{super.chop}}\n"
+        "#{super.chop}}".strip+"\n"
       end
 
       def clear!
