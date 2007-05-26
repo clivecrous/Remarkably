@@ -23,7 +23,7 @@ module Remarkably
         self
       end
 
-      def text context, *args
+      def text args, hash, &block
         @output << args.join
         self
       end
