@@ -1,0 +1,86 @@
+Remarkably can be used as template enginge generating HTML pages by
+ calling "pure" ruby methods, e.g.:
+ html do
+   header do
+   title "my header"
+   end
+   body do
+     h1 "big header"
+     ul do
+       (1..2).each do |n|
+         li "line #{n}"
+       end
+     end
+   end
+ end
+
+ This beautiful approach allows ruby control statements while generating
+ the desired page without the hassle other template engines have when
+ mixing HTML tags and ruby control.
+
+ A remarkably fact about Remarkably is, that is does not know anything
+ about HTML tags. It handles the generating of the desired page source by
+ using the ruby mechanism of the "method_missing" message: every(!) unkown
+ method will be recovered by generating appropriate HTML statements.
+
+ One of the consequences of approach is, that the parameters of such a "tag"
+ must follow some rules: it have to look like
+ sym(args, hash, &block)
+ that means, eventual arguments must be set before an eventual hash, which
+ sets the tag attributes, followed by an eventual block, which contains included
+ other tags.
+
+ Sounds terrible complicated, but it is not, e.g.: the ruby statement
+ a('Home', :href => "#{rs(:index)}")
+ will generate after the ruby interpolation
+ <a href="/index">Home</a>
+
+ To generate an anchor with a graphic icon like
+ <a href="/help" title="Help">
+   <img src="icons/help.png" border="0" alt="Help"/>
+ </a>
+ can be produced e.g. by
+ def gen_link(txt, href, icon)
+   a(:href => href, :title => txt) do
+     img(:src => icon, :border => 0, :alt => txt)
+   end # a
+ end # genlink
+ gen_link('Help', "#{rs(:help)}", 'icons/help.png')
+ You see, it is also possible to call methods when generating the page.
+
+ This shows another challenge: you can not generate a tag, which name
+ conflicts with a well known ruby method, e.g.:
+ p "this is some text"
+ will use the kernel method p to print the message to the console. To
+ generate a paragraph, you can use an upcase P like
+ P "this is another paragraph"
+ Dont worry, Remarkably uses .downcase when generating the code:
+ <p>this is another paragraph</p>
+ which keeps it XHTML conform.
+
+ The missing_method approach also has the consequence, that Reamrkably
+ can not check for valid HTML tags, e.g.:
+ xyz(:abc => "nonsens")
+ generates a syntatic correct, but semantic wrong output
+ <xyz abc="nonsens">
+ So check careful the page source offered from your browser.
+
+ There are at least two differences to Markaby: the "syntactic" sugar
+ for .class and .id! is not supported, e.g.:
+ div.myclass
+ must be edited to
+ div(:class => 'myclass')
+ and
+ div.myid!
+ must be edited to
+ div(:id => 'myid')
+
+ To insert some (eventual ruby interpolated) text in the page use text(), e.g.:
+ text(#{@content})
+
+ To use Remarkably within Ramaze just set in your controller:
+ class Controller < Ramaze::Controller
+   helper :remarkably
+   engine :Remarkably
+ end # controller
+ and put your Remarkably files named *.rem into the view/ directory
