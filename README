@@ -76,7 +76,7 @@ Remarkably can be used as template enginge generating HTML pages by
  div(:id => 'myid')
 
  To insert some (eventual ruby interpolated) text in the page use text(), e.g.:
- text(#{@content})
+ text("#{@content}")
 
  To use Remarkably within Ramaze just set in your controller:
  class Controller < Ramaze::Controller
@@ -84,3 +84,6 @@ Remarkably can be used as template enginge generating HTML pages by
    engine :Remarkably
  end # controller
  and put your Remarkably files named *.rem into the view/ directory
+
+ To keep Ramaze happy, you should terminate your .rem files with the line:
+   remarkably_engine
