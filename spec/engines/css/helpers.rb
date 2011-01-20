@@ -1,5 +1,5 @@
-require 'lib/remarkably/engines/css'
-require 'lib/remarkably/engines/css/helpers'
+require 'remarkably/engines/css'
+require 'remarkably/engines/css/helpers'
 
 describe "Remarkably::Engines::CSS Helpers" do
   include Remarkably::Common

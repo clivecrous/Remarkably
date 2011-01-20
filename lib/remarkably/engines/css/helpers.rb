@@ -9,7 +9,7 @@ end
 class Array
   def css *args, &block
     self.each do |item|
-      eval( 'self', block ).send( item.to_sym , *args, &(lambda { yield }) )
+      eval( 'self', block.binding ).send( item.to_sym , *args, &(lambda { yield }) )
     end
   end
 end

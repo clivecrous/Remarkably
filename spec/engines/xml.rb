@@ -1,6 +1,6 @@
-require 'lib/remarkably/engines/xml'
+require 'remarkably/engines/xml'
 
-describe "Remarkably::Engine::XML expclicit engine usage" do
+describe "Remarkably::Engine::XML explicit engine usage" do
   it "performs an instance_eval when a block is given to new" do
     xml = Remarkably::Engines::XML.new
     xml.html do
@@ -60,7 +60,7 @@ describe Remarkably::Engines::XML do
   it "Accepts strings and attributes" do
     testing( "Hello ", "World",
              :id => "attributes", :class => "test" ).to_s.should ==
-      '<testing class="test" id="attributes">Hello World</testing>'
+      '<testing id="attributes" class="test">Hello World</testing>'
   end
 
   it "Allows yielding for internal content" do

@@ -1,30 +1,9 @@
-require 'rake'
-require 'rake/gempackagetask'
+require 'bundler'
+Bundler::GemHelper.install_tasks
 
-spec = Gem::Specification.new do |s| 
-  s.name = "Remarkably"
-  s.version = "0.5.3"
-  s.author = "Clive Crous"
-  s.email = "clive@darkarts.co.za"
-  s.homepage = "http://www.darkarts.co.za/"
-  s.platform = Gem::Platform::RUBY
-  s.summary = "Remarkably is a very tiny Markaby-like XML builder"
-  s.files = FileList["lib/**/*"].to_a
-  s.require_path = "lib"
+require 'rspec/core/rake_task'
+
+desc "Run specs"
+RSpec::Core::RakeTask.new do |t|
+  t.pattern = "./spec/**/*.rb"
 end
- 
-Rake::GemPackageTask.new(spec) do |pkg| 
-  pkg.need_tar = true 
-end 
-
-desc "Run the unit tests"
-task :test do
-  sh "spec -r loadpath spec/"
-end
-
-desc "Create the documentation"
-task :doc do
-  sh "rdoc lib"
-end
-
-task :default => %w{test}

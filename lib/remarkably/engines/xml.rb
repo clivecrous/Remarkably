@@ -10,7 +10,7 @@ module Remarkably
         tag_attributes =
           hash.inject([]){|s,(k,v)| s << %{#{k.to_s.downcase}="#{v}"} }
 
-        @output << ["<#{sym}", tag_attributes].flatten.grep(/\S/).join(' ')
+        @output << ( ["<#{sym}"] +  tag_attributes).join(' ')
 
         if block_given? or not args.empty?
           @output << ">"
@@ -23,7 +23,7 @@ module Remarkably
         self
       end
 
-      def text args, hash, &block
+      def text args, hash
         @output << args.join
         self
       end

@@ -3,3 +3,4 @@ pkg/*
 .bundle
 vendor/*
 *.swp
+Gemfile.lock

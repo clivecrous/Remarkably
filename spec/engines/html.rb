@@ -1,4 +1,4 @@
-require 'lib/remarkably/engines/html'
+require 'remarkably/engines/html'
 
 describe "Remarkably::Engine::HTML instance_eval" do
   it "performs an instance_eval when a block is given to new" do
@@ -49,7 +49,7 @@ describe Remarkably::Engines::HTML do
   it "Accepts strings and attributes" do
     testing( "Hello ", "World",
              :id => "attributes", :class => "test" ).to_s.should ==
-      '<testing class="test" id="attributes">Hello World</testing>'
+      '<testing id="attributes" class="test">Hello World</testing>'
   end
 
   it "Allows yielding for internal content" do

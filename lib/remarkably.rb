@@ -1,3 +1,5 @@
+require 'remarkably/version'
+
 module Remarkably
 
   module Config
@@ -9,16 +11,22 @@ module Remarkably
   module Base
 
     class Engine
+
+      attr_reader :remarkably_engine
+
       def initialize *args, &block
         clear!
+        @remarkably_engine = self
         self.instance_eval( &block ) if block_given?
       end
 
       def missing_method(sym, context, *args, &block)
         @context = context
         hash = args.last.is_a?(Hash) ? args.pop : {}
-        if methods.index( sym.to_s )
-          self.send( sym, args, hash, &block )
+        responder ||= context.remarkably_engine if context.remarkably_engine.respond_to?( sym )
+        responder ||= self if self.respond_to?( sym )
+        if responder
+          responder.send( sym, args, hash, &block )
         else
           method!(sym, args, hash, &block)
         end

@@ -1,4 +1,4 @@
-require 'lib/remarkably/engines/css'
+require 'remarkably/engines/css'
 
 describe Remarkably::Engines::CSS do
   include Remarkably::Common
