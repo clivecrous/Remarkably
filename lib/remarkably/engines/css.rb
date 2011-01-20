@@ -26,7 +26,10 @@ module Remarkably
             @css_prefix_rendered = true
             @css_first_use = false
           end
-          @output << "#{sym.gsub('_','-')}:#{args.map{|a|a.to_s}.join(' ')};"
+          # XXX This line below is more complex than it needs to be, for some
+          # reason gsub in ruby 1.9.2 throws a method_missing breaking
+          # everything :(
+          @output << "#{sym.to_s.split('').map{|n|n=='_' ? '-' : n}.join('')}:#{args.map{|a|a.to_s}.join(' ')};"
         end
         self
       end
