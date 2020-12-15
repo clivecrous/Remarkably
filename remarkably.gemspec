@@ -11,6 +11,7 @@ Gem::Specification.new do |s|
   s.homepage    = "http://www.darkarts.co.za/remarkably"
   s.summary     = %q{A very tiny Markaby-like XML,HTML and CSS builder}
   s.description = %q{Remarkably is a very tiny Markaby-like XML,HTML and CSS builder}
+  s.license     = "MIT"
 
   s.add_development_dependency "bundler", ">= 1.0.0"
   s.add_development_dependency "rake", ">= 0.8.7"
