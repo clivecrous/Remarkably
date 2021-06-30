@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Clive Crous"]
   s.email       = ["clive@crous.co.za"]
-  s.homepage    = "http://www.darkarts.co.za/remarkably"
+  s.homepage    = 'https://github.com/clivecrous/Remarkably'
   s.summary     = %q{A very tiny Markaby-like XML,HTML and CSS builder}
   s.description = %q{Remarkably is a very tiny Markaby-like XML,HTML and CSS builder}
   s.license     = "MIT"
